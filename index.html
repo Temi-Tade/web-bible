@@ -3,9 +3,46 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/fontawesome.min.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Gudea">
+    <link rel="icon" href="./assets/images/icon.png" type="image/x-icon">
     <title>The Web Bible</title>
 </head>
 <body>
-    
+    <div id="main">
+        <header>
+            <div id="name">
+                <h1>The Web Bible</h1>
+            </div>
+
+            <div id="options">
+                <nav>
+                    <ul type="none">
+                        <li><button class="fa-solid fa-sun" title="Switch Theme"></button></li>
+                        <li><button class="fa-solid fa-gear" title="Settings"></button></li>
+                        <li><button class="fa-solid fa-bookmark" title="Bookmarks"></button></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+
+        <section id="info"></section>
+
+        <div id="not-header">
+            <div id="content">
+                <section id="left-sidebar">
+                    <ul id="books-list" type="none"></ul>
+                </section>
+                <section id="bible-text">c</section>
+                <section id="right-sidebar">
+                    <ul id="chapters-list" type="none"></ul>
+                </section>
+            </div>
+        </div>
+    </div>
+    <script src="./assets/js/main.js"></script>
+    <script src="./assets/js/api.js"></script>
 </body>
 </html>
