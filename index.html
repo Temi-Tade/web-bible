@@ -33,16 +33,24 @@
         <div id="not-header">
             <div id="content">
                 <section id="left-sidebar">
+                    <div class="search-wrap">
+                        <input type="text" oninput="SEARCH_BOOKS(this.value)" class="search" placeholder="Search a book...">
+                    </div>
                     <ul id="books-list" type="none"></ul>
                 </section>
-                <section id="bible-text">c</section>
+
+                <section id="bible-reading"></section>
+
                 <section id="right-sidebar">
-                    <ul id="chapters-list" type="none"></ul>
+                    <h3 id="chapter-name">Chapters (Select a book first)</h3>
+                    <ul id="chapters-list" type="none">
+                    </ul>
                 </section>
             </div>
         </div>
     </div>
     <script src="./assets/js/main.js"></script>
     <script src="./assets/js/api.js"></script>
+    <script src="./assets/js/app.js"></script>
 </body>
 </html>

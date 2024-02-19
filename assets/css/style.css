@@ -3,6 +3,11 @@
     margin: 0;
     box-sizing: border-box;
     font-family: "Gudea", sans-serif;
+    transition: .5s;
+}
+
+*:focus{
+    outline: 0;
 }
 
 :root{
@@ -79,7 +84,7 @@ header{
 
 #content{
     display: grid;
-    grid-template-columns: 1fr 3fr 2fr;
+    grid-template-columns: 1.5fr 5fr 2fr;
     column-gap: 1rem;
     padding: .25rem;
 }
@@ -92,14 +97,67 @@ header{
     padding: .5rem;
 }
 
-#left-sidebar ul, #right-sidebar ul{
+#bible-reading{
     overflow-y: scroll;
-    height: 87dvh
+    height: 85dvh;
+}
+
+#left-sidebar ul{
+    overflow-y: scroll;
+    height: 80dvh;
+}
+
+#right-sidebar ul{
+    overflow-y: scroll;
+    height: 84dvh
 }
 
 #left-sidebar button{
-    display: inline-block;
+    display: block;
     width: 100%;
     text-align: left;
     padding: .5rem;
+    border-radius: .5rem;
+}
+
+#right-sidebar ul{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+#chapter-name{
+    text-align: center;
+}
+
+#right-sidebar ul li{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#right-sidebar ul li button{
+    padding: .25rem;
+    width: 3rem;
+    height: 3rem;
+    border-radius: .5rem;
+}
+
+#chapters-list p{
+    display: block;
+    text-align: center;
+    width: 100%;
+    height: 100%;
+}
+
+.search-wrap{
+    padding: .5rem;
+}
+
+.search{
+    padding: .5rem;
+    width: 100%;
+    border-radius: .5rem;
+    border: 1px solid;
+    margin: auto;
+    display: block;
 }
