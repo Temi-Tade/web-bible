@@ -30,10 +30,18 @@
 
 html{
     position: relative;
+    accent-color: var(--brand-color);
 }
 
 body{
     overflow: hidden;
+}
+
+#searchinfo{
+    width: 75%;
+    font-size: 1.2rem;
+    text-align: center;
+    margin: auto;
 }
 
 button{
@@ -53,11 +61,11 @@ header{
     display: flex;
     justify-content: space-between;
     align-items: center;
+    z-index: 10;
 }
 
 #options nav{
     padding: 0 .5rem;
-    width: 10rem;
 }
 
 #options ul{
@@ -71,15 +79,14 @@ header{
 }
 
 #not-header{
-    transform: translateY(4rem);
+    transform: translateY(4.25rem);
     /* overflow-y: scroll; */
 }
 
 #info{
-    padding: 1rem;
-    position: fixed;
-    top: 0;
-    background-color: yellow;
+    background-color: #ccc7;
+    border-radius: .5rem;
+    padding: .5rem;
 }
 
 #content{
@@ -91,6 +98,7 @@ header{
 
 #content button:hover{
     background-color: rgb(218, 216, 214);
+    transform: scale(.95);
 }
 
 #content section{
@@ -99,12 +107,16 @@ header{
 
 #bible-reading{
     overflow-y: scroll;
-    height: 85dvh;
+    height: 89dvh;
 }
 
 #left-sidebar ul{
     overflow-y: scroll;
-    height: 80dvh;
+    height: 87dvh;
+}
+
+#left-sidebar button{
+    font-size: 1rem;
 }
 
 #right-sidebar ul{
@@ -160,4 +172,92 @@ header{
     border: 1px solid;
     margin: auto;
     display: block;
+}
+
+.loader{
+    text-align: center;
+    font-size: 4rem;
+    margin-top: 25dvh;
+    color: #555e;
+}
+
+.loader-con{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#modal-bg{
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #3337;
+    display: none;
+}
+
+#modal{
+    width: 80%;
+    padding: 1rem;
+    background-color: var(--text-color-dark);
+    margin: auto;
+    margin-top: 25dvh;
+    border-radius: .75rem;
+}
+
+#mod-list li{
+    display: flex;
+    border: 1px solid;
+    padding: .5rem;
+    margin: .25rem 0;
+    justify-content: space-between;
+}
+
+#mod-list select{
+    background: transparent;
+    border: 0;
+    cursor: pointer;
+    padding: .25rem;
+}
+
+#mod-list option{
+    appearance: none;
+    font-size: 1rem;
+}
+
+#Ubuntu{
+    font-family: "Ubuntu";
+}
+
+#kode-mono{
+    font-family: "Kode Mono";
+}
+
+@media screen and (max-width: 600px) {
+    .not-mobile{
+        display: none;
+    }
+
+    body{
+        overflow: scroll;
+    }
+
+    #content{
+        display: flex;
+        flex-direction: column;
+    }
+
+    #bible-reading{
+        height: auto;
+    }
+    
+    #left-sidebar ul{
+        height: auto;
+    }
+    
+    #right-sidebar ul{
+        height: auto;
+    }
 }

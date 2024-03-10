@@ -1,10 +1,22 @@
+window.onresize = () => {
+    history.go(0)
+}
+
 const CREATE_URL = (chp) => {
     url += `/${chp}/`
-    let req = fetch(url)
+    READING.innerHTML = "<div class='loader-con'><span class='fa-solid fa-spinner fa-spin loader'></span></div>"
+    if (window.innerWidth <= 600) {
+        BOOKS.innerHTML = "<div class='loader-con'><span class='fa-solid fa-spinner fa-spin loader'></span></div>"
+    }
+    document.querySelector("#c").innerHTML = chp
+    fetch(url)
     .then(res => res.json())
     .then(data => {
         // console.log(data)
         READING.innerHTML = ""
+        if (window.innerWidth <= 600) {
+            BOOKS.innerHTML = ""
+        }
         let arr = []
         let j = 0
         while (j < data.length) {
@@ -13,7 +25,87 @@ const CREATE_URL = (chp) => {
         }
         arr.forEach((val,ind) => {
             READING.innerHTML += `<p>${val[ind].verse} ${val[ind].text}</p><br>`
+            if (window.innerWidth <= 600) {
+                BOOKS.innerHTML += `<p>${val[ind].verse} ${val[ind].text}</p><br>`
+            }
         }); 
         url = `https://bolls.life/get-chapter/KJV`
     })
+}
+
+const SEARCH_BOOKS = (param) => {
+    [...BOOKS.querySelectorAll("li button")].forEach(val => {
+        if (val.innerHTML.toLowerCase().includes(param.toLowerCase())) {
+            val.style.display = "block"
+        } else {
+            val.style.display = "none"
+        }
+    });
+    if ([...BOOKS.querySelectorAll("li button")].every(val => val.style.display === "none")) {
+       document.querySelector("#searchinfo").innerHTML = "Verily, it was written that ye shall seek and ye shall find. Howbeit, I would have you know that on this day, thou has sought and not found ;)"
+    }else{
+        document.querySelector("#searchinfo").innerHTML = ""
+    }
+}
+
+const CREATE_MODAL = (text) => {
+    MOD.parentElement.style.display = "block"
+    MOD.parentElement.animate({
+        opacity: ["0", "1"]
+    },
+    {
+        duration: 200
+    })
+    MOD.innerHTML = text
+    window.onclick = (e) => {
+        if (e.target === MOD.parentElement) {
+            MOD.parentElement.animate({
+                opacity: ["1", "0"]
+            },
+            {
+                duration: 200
+            })
+            setTimeout(() => {
+                MOD.parentElement.style.display = "none"
+            }, 100)
+        }
+    }
+}
+
+const SETTINGS = () => {
+    CREATE_MODAL(` 
+        <h3>Settings</h3>
+        <ul type="none" id="mod-list">
+            <li>
+                <p class='opt'>Theme</p>
+                <p class='val'>
+                    <select>
+                        <option value="Light">Light</option>
+                        <option value="Dark">Dark</option>
+                    </select>
+                </p>
+            </li>
+
+            <li>
+                <p class='opt'>Font</p>
+                <p class='val'>
+                    <select id='fonts'>
+                        <option value="Gudea">Default</option>
+                        <option value="Ubuntu" id="ubuntu">Ubuntu</option>
+                        <option value="Kode Mono" id="kode-mono">Kode Mono</option>
+                        <option value="Anta" id="anta">Anta</option>
+                    </select>
+                </p>
+            </li>
+        </ul>
+    `)
+}
+
+if (window.innerWidth <= 600) {
+    INFO.onclick = () => {
+        getBooks("KJV")
+        INFO.innerHTML = `<span id="b">Book</span> <span id="c">Chapter</span>`
+        document.querySelector(".search-wrap").style.display = "block"
+        document.querySelector(".search-wrap input").value = ""
+    }
 }

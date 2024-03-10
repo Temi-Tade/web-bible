@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="./assets/css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/fontawesome.min.css">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Gudea">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Gudea|Ubuntu|Kode+Mono|Anta">
     <link rel="icon" href="./assets/images/icon.png" type="image/x-icon">
     <title>The Web Bible</title>
 </head>
@@ -17,36 +17,39 @@
                 <h1>The Web Bible</h1>
             </div>
 
+            <section id="info"><span id="b">Book</span> <span id="c">Chapter</span></section>
+
             <div id="options">
                 <nav>
                     <ul type="none">
-                        <li><button class="fa-solid fa-sun" title="Switch Theme"></button></li>
-                        <li><button class="fa-solid fa-gear" title="Settings"></button></li>
-                        <li><button class="fa-solid fa-bookmark" title="Bookmarks"></button></li>
+                        <li><button class="fa-solid fa-gear" title="Settings" onclick="SETTINGS()"></button></li>
+                        <!-- <li><button class="fa-solid fa-bookmark" title="Bookmarks"></button></li> -->
                     </ul>
                 </nav>
             </div>
         </header>
 
-        <section id="info"></section>
-
         <div id="not-header">
             <div id="content">
                 <section id="left-sidebar">
                     <div class="search-wrap">
-                        <input type="text" oninput="SEARCH_BOOKS(this.value)" class="search" placeholder="Search a book...">
+                        <input type="text" oninput="SEARCH_BOOKS(this.value)" class="search" placeholder="Search a book or chapter...">
                     </div>
+                    <p id="searchinfo"></p>
                     <ul id="books-list" type="none"></ul>
                 </section>
 
-                <section id="bible-reading"></section>
+                <section id="bible-reading" class="not-mobile"></section>
 
-                <section id="right-sidebar">
+                <section id="right-sidebar" class="not-mobile">
                     <h3 id="chapter-name">Chapters (Select a book first)</h3>
-                    <ul id="chapters-list" type="none">
-                    </ul>
+                    <ul id="chapters-list" type="none"></ul>
                 </section>
             </div>
+        </div>
+
+        <div id="modal-bg">
+            <div id="modal"></div>
         </div>
     </div>
     <script src="./assets/js/main.js"></script>
