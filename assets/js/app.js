@@ -4,8 +4,12 @@ window.onresize = () => {
 
 const CREATE_URL = (chp) => {
     url += `/${chp}/`
+    let state = JSON.parse(sessionStorage.getItem("bible_url"))
+    state.link = url
+    sessionStorage.setItem("bible_url", JSON.stringify(state))
     READING.innerHTML = "<div class='loader-con'><span class='fa-solid fa-spinner fa-spin loader'></span></div>"
     if (window.innerWidth <= 600) {
+        BOOKS.style = "display: flex"
         BOOKS.innerHTML = "<div class='loader-con'><span class='fa-solid fa-spinner fa-spin loader'></span></div>"
     }
     document.querySelector("#c").innerHTML = chp
@@ -26,10 +30,11 @@ const CREATE_URL = (chp) => {
         arr.forEach((val,ind) => {
             READING.innerHTML += `<p>${val[ind].verse} ${val[ind].text}</p><br>`
             if (window.innerWidth <= 600) {
+                BOOKS.style = "display: block"
                 BOOKS.innerHTML += `<p>${val[ind].verse} ${val[ind].text}</p><br>`
             }
         }); 
-        url = `https://bolls.life/get-chapter/KJV`
+        // url = `https://bolls.life/get-chapter/KJV`
     })
 }
 
@@ -76,7 +81,7 @@ const SETTINGS = () => {
     CREATE_MODAL(` 
         <h3>Settings</h3>
         <ul type="none" id="mod-list">
-            <li>
+            <!--<li>
                 <p class='opt'>Theme</p>
                 <p class='val'>
                     <select>
@@ -96,6 +101,20 @@ const SETTINGS = () => {
                         <option value="Anta" id="anta">Anta</option>
                     </select>
                 </p>
+            </li>-->
+
+            <li>
+                <p class='opt'>Version</p>
+                <p class='val'>
+                    <select id='fonts' onchange='CHANGE_VERSION(this.value)'>
+                        <option value="KJV">KJV</option>
+                        <option value="NIV">NIV</option>
+                        <option value="AMP">AMP</option>
+                        <option value="ESV">ESV</option>
+                        <option value="NLT">NLT</option>
+                        <option value="MSG">MSG</option>
+                    </select>
+                </p>
             </li>
         </ul>
     `)
@@ -107,5 +126,42 @@ if (window.innerWidth <= 600) {
         INFO.innerHTML = `<span id="b">Book</span> <span id="c">Chapter</span>`
         document.querySelector(".search-wrap").style.display = "block"
         document.querySelector(".search-wrap input").value = ""
+        BOOKS.style = "display: block"
+    }
+}
+
+const CHANGE_VERSION = (ver) => {
+    let state = JSON.parse(sessionStorage.getItem("bible_url"))
+    state.version = ver
+    sessionStorage.setItem("bible_url", JSON.stringify(state))
+    getBooks(state.version)
+    if (state.link === "") {
+        getBooks()
+    } else {
+        let newlink = state.link.replace(state.link.substring(31, 34), state.version)
+        state.link = newlink
+        sessionStorage.setItem("bible_url", JSON.stringify(state))
+        fetch(`${state.link}`)
+        .then(res => res.json())
+        .then(data => {
+            READING.innerHTML = ""
+            if (window.innerWidth <= 600) {
+                BOOKS.innerHTML = ""
+            }
+            let arr = []
+            let j = 0
+            while (j < data.length) {
+                arr.push(data)
+                ++j
+            }
+            arr.forEach((val,ind) => {
+                READING.innerHTML += `<p>${val[ind].verse} ${val[ind].text}</p><br>`
+                if (window.innerWidth <= 600) {
+                    BOOKS.style = "display: block"
+                    BOOKS.innerHTML += `<p>${val[ind].verse} ${val[ind].text}</p><br>`
+                }
+            }); 
+            // url = `https://bolls.life/get-chapter/KJV`
+        })
     }
 }

@@ -87,6 +87,7 @@ header{
     background-color: #ccc7;
     border-radius: .5rem;
     padding: .5rem;
+    text-align: center;
 }
 
 #content{
@@ -112,7 +113,7 @@ header{
 
 #left-sidebar ul{
     overflow-y: scroll;
-    height: 87dvh;
+    height: 80dvh;
 }
 
 #left-sidebar button{
@@ -259,5 +260,12 @@ header{
     
     #right-sidebar ul{
         height: auto;
+    }
+
+    #info::after{
+        content: "Click here to go back to the chapters view";
+        display: block;
+        font-style: italic;
+        font-size: .75rem;
     }
 }

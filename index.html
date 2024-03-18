@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/fontawesome.min.css">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Gudea|Ubuntu|Kode+Mono|Anta">
-    <link rel="icon" href="./assets/images/icon.png" type="image/x-icon">
+    <link rel="icon" href="./assets/images/favicon.png" type="image/x-icon">
     <title>The Web Bible</title>
 </head>
 <body>
@@ -33,7 +33,7 @@
             <div id="content">
                 <section id="left-sidebar">
                     <div class="search-wrap">
-                        <input type="text" oninput="SEARCH_BOOKS(this.value)" class="search" placeholder="Search a book or chapter...">
+                        <input type="text" oninput="SEARCH_BOOKS(this.value)" class="search" placeholder="Search a book or chapter..." id="search_books" autocomplete="off">
                     </div>
                     <p id="searchinfo"></p>
                     <ul id="books-list" type="none"></ul>
