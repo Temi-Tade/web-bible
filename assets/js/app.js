@@ -104,7 +104,7 @@ const SETTINGS = () => {
             </li>-->
 
             <li>
-                <p class='opt'>Version</p>
+                <p class='opt'>Select Version</p>
                 <p class='val'>
                     <select id='fonts' onchange='CHANGE_VERSION(this.value)'>
                         <option value="KJV">KJV</option>
@@ -134,9 +134,9 @@ const CHANGE_VERSION = (ver) => {
     let state = JSON.parse(sessionStorage.getItem("bible_url"))
     state.version = ver
     sessionStorage.setItem("bible_url", JSON.stringify(state))
-    getBooks(state.version)
     if (state.link === "") {
-        getBooks()
+        BOOKS.innerHTML = ""
+        getBooks(state.version)
     } else {
         let newlink = state.link.replace(state.link.substring(31, 34), state.version)
         state.link = newlink

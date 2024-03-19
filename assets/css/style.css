@@ -210,7 +210,6 @@ header{
 
 #mod-list li{
     display: flex;
-    border: 1px solid;
     padding: .5rem;
     margin: .25rem 0;
     justify-content: space-between;
