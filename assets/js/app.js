@@ -1,7 +1,3 @@
-window.onresize = () => {
-    history.go(0)
-}
-
 const CREATE_URL = (chp) => {
     url += `/${chp}/`
     let state = JSON.parse(sessionStorage.getItem("bible_url"))
@@ -117,6 +113,7 @@ const SETTINGS = () => {
                 </p>
             </li>
         </ul>
+        <p><em>More features are coming in future releases!</em></p>
     `)
 }
 
