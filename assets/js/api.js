@@ -18,6 +18,7 @@ async function getBooks() {
                     document.querySelector(".search-wrap").style.display = "none"
                 }
                 url = `https://bolls.life/get-chapter/${state.version}/${ind}`
+                state.chapter = ind
                 state.link = url
                 sessionStorage.setItem("bible_url", JSON.stringify(state))
                 document.querySelector("#chapter-name").innerHTML = name

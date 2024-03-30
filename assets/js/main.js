@@ -6,5 +6,7 @@ const INFO = document.querySelector("#info")
 
 sessionStorage.setItem("bible_url", JSON.stringify({
     version: "KJV",
+    chapter: "",
+    verse: "",
     link: ""
 }))
