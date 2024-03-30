@@ -1,4 +1,4 @@
-let url = `https://bolls.life/get-chapter/`
+let url = ``
 document.querySelector("#search_books").disabled = true
 
 async function getBooks() {
@@ -17,7 +17,7 @@ async function getBooks() {
                 if (window.innerWidth <= 600) {
                     document.querySelector(".search-wrap").style.display = "none"
                 }
-                url += `${state.version}/${ind}`
+                url = `https://bolls.life/get-chapter/${state.version}/${ind}`
                 state.link = url
                 sessionStorage.setItem("bible_url", JSON.stringify(state))
                 document.querySelector("#chapter-name").innerHTML = name
