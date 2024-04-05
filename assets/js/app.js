@@ -1,6 +1,6 @@
 const CREATE_URL = (chp) => {
     let state = JSON.parse(sessionStorage.getItem("bible_url"))
-    url = `https://bolls.life/get-chapter/${state.version}/${chp}/${state.chapter}/`
+    url = `https://bolls.life/get-chapter/${state.version}/${state.chapter}/${chp}/`
     state.link = url
     sessionStorage.setItem("bible_url", JSON.stringify(state))
     READING.innerHTML = "<div class='loader-con'><span class='fa-solid fa-spinner fa-spin loader'></span></div>"

@@ -272,8 +272,7 @@ header{
     }
 
     #info::after{
-        content: "Click here to go back to the chapters view";
-        display: block;
+        content: '\f0d1';
         font-style: italic;
         font-size: .75rem;
     }
