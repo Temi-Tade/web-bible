@@ -27,7 +27,7 @@
 	}
 	
 	#content button:hover{
-	    background-color: #ddd;
+	    background-color: #ccc;
 	    transform: scale(.975);
 	}
 	
@@ -215,6 +215,7 @@ header img{
     width: 3rem;
     height: 3rem;
     border-radius: .5rem;
+    font-size: 1.25rem
 }
 
 #chapters-list p{

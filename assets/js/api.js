@@ -29,7 +29,7 @@ async function getBooks() {
                 sessionStorage.setItem("bible_url", JSON.stringify(state))
                 document.querySelector("#chapter-name").innerHTML = name
                 document.querySelector("#b").innerHTML = name
-                document.querySelector("#c").innerHTML = "" + '  <i class="fa-solid fa-caret-down"></i>'
+                document.querySelector("#c").innerHTML = window.innerWidth <= 600 ? "" + '  <i class="fa-solid fa-caret-down"></i>' : ""
                 CHAPTERS.innerHTML = ""
                 if (window.innerWidth <= 600) {
                     BOOKS.innerHTML = ""

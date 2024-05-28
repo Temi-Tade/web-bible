@@ -8,7 +8,7 @@ const CREATE_URL = (chp) => {
         BOOKS.style = "display: flex"
         BOOKS.innerHTML = "<div class='loader-con'><span class='fa-solid fa-spinner fa-spin loader'></span></div>"
     }
-    document.querySelector("#c").innerHTML = chp + '  <i class="fa-solid fa-caret-down"></i>'
+    document.querySelector("#c").innerHTML = window.innerWidth <= 600 ? chp + '  <i class="fa-solid fa-caret-down"></i>' : chp
     fetch(url)
     .then(res => res.json())
     .then(data => {
