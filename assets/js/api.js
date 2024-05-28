@@ -11,6 +11,12 @@ async function getBooks() {
     .then(data => {
         // console.log(data);
         for (let i = 0; i < 66; i++) {
+        	if (i === 0) {
+        		BOOKS.innerHTML += '<h3 class="testament">Old Testament</h3>'
+        	}
+        	if (i === 39){
+        		BOOKS.innerHTML += '<h3 class="testament">new testament</h3>'
+        	}
             BOOKS.innerHTML += `<li><button onclick='listChapters(${data[i].chapters}, this.innerHTML, ${i + 1})'>${data[i].name}</button></li>`
             document.querySelector("#search_books").disabled = false
             listChapters = (chps, name, ind) => {
@@ -23,7 +29,7 @@ async function getBooks() {
                 sessionStorage.setItem("bible_url", JSON.stringify(state))
                 document.querySelector("#chapter-name").innerHTML = name
                 document.querySelector("#b").innerHTML = name
-                document.querySelector("#c").innerHTML = ""
+                document.querySelector("#c").innerHTML = "" + '  <i class="fa-solid fa-caret-down"></i>'
                 CHAPTERS.innerHTML = ""
                 if (window.innerWidth <= 600) {
                     BOOKS.innerHTML = ""
@@ -40,7 +46,7 @@ async function getBooks() {
                     if (window.innerWidth <= 600) {
                         BOOKS.innerHTML += `<li><button onclick='CREATE_URL(this.innerHTML)'>${val}</button></li>`;
                         [...BOOKS.querySelectorAll("li button")].forEach(val => {
-                            val.style = "text-align: center; padding: .5rem; font-size: 1.25rem"
+                            val.style = "text-align: center; padding: .75rem; font-size: 1.5rem; width: 5rem; margin-top: 1rem"
                         })
                     }
                 })
@@ -57,3 +63,4 @@ getBooks()
 //contextmenu
 //quick search
 //compare
+//share

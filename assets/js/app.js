@@ -8,11 +8,11 @@ const CREATE_URL = (chp) => {
         BOOKS.style = "display: flex"
         BOOKS.innerHTML = "<div class='loader-con'><span class='fa-solid fa-spinner fa-spin loader'></span></div>"
     }
-    document.querySelector("#c").innerHTML = chp
+    document.querySelector("#c").innerHTML = chp + '  <i class="fa-solid fa-caret-down"></i>'
     fetch(url)
     .then(res => res.json())
     .then(data => {
-        // console.log(data)
+        //console.log(data)
         READING.innerHTML = ""
         if (window.innerWidth <= 600) {
             BOOKS.innerHTML = ""
@@ -26,7 +26,7 @@ const CREATE_URL = (chp) => {
         arr.forEach((val,ind) => {
             READING.innerHTML += `<p>${val[ind].verse} ${val[ind].text}</p><br>`
             if (window.innerWidth <= 600) {
-                BOOKS.style = "display: block"
+                BOOKS.style = "display: block; font-size: 1.25rem"
                 BOOKS.innerHTML += `<p>${val[ind].verse} ${val[ind].text}</p><br>`
             }
         }); 
@@ -109,6 +109,8 @@ const SETTINGS = () => {
                         <option value="ESV">ESV</option>
                         <option value="NLT">NLT</option>
                         <option value="MSG">MSG</option>
+                        <option value="NKJV">NKJV</option>
+
                     </select>
                 </p>
             </li>
@@ -120,7 +122,7 @@ const SETTINGS = () => {
 if (window.innerWidth <= 600) {
     INFO.onclick = () => {
         getBooks("KJV")
-        INFO.innerHTML = `<span id="b">Book</span> <span id="c">Chapter</span>`
+        INFO.innerHTML = `<span id="b"></span> <span id="c"></span>`
         document.querySelector(".search-wrap").style.display = "block"
         document.querySelector(".search-wrap input").value = ""
         BOOKS.style = "display: block"
@@ -129,13 +131,15 @@ if (window.innerWidth <= 600) {
 
 const CHANGE_VERSION = (ver) => {
     let state = JSON.parse(sessionStorage.getItem("bible_url"))
+    let oldver = state.version
     state.version = ver
     sessionStorage.setItem("bible_url", JSON.stringify(state))
     if (state.link === "") {
         BOOKS.innerHTML = ""
         getBooks(state.version)
     } else {
-        let newlink = state.link.replace(state.link.substring(31, 34), state.version)
+        let newlink = state.link.replace(oldver, state.version)
+        console.log(newlink)
         state.link = newlink
         sessionStorage.setItem("bible_url", JSON.stringify(state))
         fetch(`${state.link}`)
@@ -154,7 +158,7 @@ const CHANGE_VERSION = (ver) => {
             arr.forEach((val,ind) => {
                 READING.innerHTML += `<p>${val[ind].verse} ${val[ind].text}</p><br>`
                 if (window.innerWidth <= 600) {
-                    BOOKS.style = "display: block"
+                    BOOKS.style = "display: block; font-size: 1.25rem"
                     BOOKS.innerHTML += `<p>${val[ind].verse} ${val[ind].text}</p><br>`
                 }
             }); 
