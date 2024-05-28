@@ -75,15 +75,15 @@
 	}
 }
 
-/* ::-webkit-scrollbar{
+/* ::-webkit-autobar{
     background-color: red;
 }
 
-::-webkit-scrollbar-button{
+::-webkit-autobar-button{
     background-color: red;
 }
 
-::-webkit-scrollbar-track{
+::-webkit-autobar-track{
     background-color: #12b142;
 } */
 
@@ -144,7 +144,7 @@ header img{
 
 #not-header{
     transform: translateY(4.25rem);
-    /* overflow-y: scroll; */
+    /* overflow-y: auto; */
 }
 
 #info{
@@ -167,12 +167,12 @@ header img{
 }
 
 #bible-reading{
-    overflow-y: scroll;
+    overflow-y: auto;
     height: 89dvh;
 }
 
 #left-sidebar ul{
-    overflow-y: scroll;
+    overflow-y: auto;
     height: 80dvh;
 }
 
@@ -182,7 +182,7 @@ header img{
 }
 
 #right-sidebar ul{
-    overflow-y: scroll;
+    overflow-y: auto;
     height: 80dvh;
 }
 
@@ -195,8 +195,6 @@ header img{
 }
 
 #right-sidebar ul{
-    display: gri;
-    grid-template-columns: 1fr 1fr 1fr;
     height: 84dvh;
 }
 
@@ -215,7 +213,8 @@ header img{
     width: 3rem;
     height: 3rem;
     border-radius: .5rem;
-    font-size: 1.25rem
+    font-size: 1.25rem;
+    margin: auto .25rem;
 }
 
 #chapters-list p{
@@ -306,7 +305,7 @@ header img{
 @media screen and (max-width: 600px) {
     #not-header{
         transform: translateY(3rem);
-        /* overflow-y: scroll; */
+        /* overflow-y: auto; */
     }
 
     .not-mobile{
@@ -319,7 +318,7 @@ header img{
     }
 
     body{
-        overflow: scroll;
+        overflow: auto;
     }
 
     #content{
